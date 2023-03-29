@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeStreams</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,400;0,500;1,100&display=swap"
+        rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
+</head>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+
+    <div id="player">
+        <!-- Para mudar de ep ir alterando src com req.query.ep? -->
+        <h1><%= title %></h1>        
+        <video id="my-video" class="video-js" controls preload="auto" width="960" height="396" data-setup="{}">
+        <source src="/videos/Fairy Tail - Official Launch Trailer.mp4" type="video/mp4" />
+        <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+        
+    </div>
+    
+    <div id="languages">
+        <a href="" class="selected">Sub</a>
+        <a href="">Dub</a>
+    </div>
+
+    <div id="episodes">
+        <% for ( let i = 1; i <= episodes; i++ ) { %>
+            <a href="?title=<%= title %>&ep=<%= i %>"><%= i %></a>
+        <% } %>
+    </div>
+    
+    <%- include('./partials/footer.ejs') %>
+
+    <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+</body>
+
+</html>
